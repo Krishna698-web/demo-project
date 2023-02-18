@@ -1,0 +1,11 @@
+.listItem{
+    border: 1px solid #ccc;
+    padding: 8px 1rem;
+    text-align: left;
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    border-radius: 3px;
+    margin: 8px 0;
+}

@@ -1,0 +1,33 @@
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: rgba(14, 20, 22, 0.85);
+    width: 100vw;
+}
+
+.popUp{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    padding: 2rem;
+}
+
+header{
+    background-color: #15253f;
+    padding: 2rem;
+    border-radius: 4px;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+p{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
