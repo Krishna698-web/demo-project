@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Button from './UI/Button';
 import PopUp from './PopUp';
 import Card from './UI/Card';
@@ -6,25 +6,28 @@ import classes from './Input.module.css';
 import styles from './UI/Button.module.css';
 
 const Input = (props) => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
+  // const [name, setName] = useState('');
+  // const [age, setAge] = useState('');
+  const enteredName = useRef();
+  const enteredAge = useRef();
+
   const [error, setError] = useState();
 
   const submitHandler = (e) => {
     e.preventDefault();
-
+    
     let info = {
-      name: name,
-      age: age
+      name: enteredName.current.value,
+      age: enteredAge.current.value
     }
-    if (name.length === 0 || age.length === 0) {
+    if (enteredName.length === 0 || enteredAge.length === 0) {
       setError({
         title: "Invalid Input",
         msg: 'Please fill in the required fields'
       })
       return;
     }
-    if (age < 0) {
+    if (enteredAge < 0) {
       setError({
         title: "Invalid Age",
         msg: 'Enter an age greater than 0'
@@ -32,8 +35,8 @@ const Input = (props) => {
       return;
     }
     props.onGetData(info);
-    setName('');
-    setAge('');
+    enteredName.current.value = '';
+    enteredAge.current.value = '';
   }
   return (
     <Card>
@@ -41,11 +44,11 @@ const Input = (props) => {
       <form onSubmit={submitHandler} className="form">
         <div className={classes.field}>
           <label htmlFor='name'>Name:</label>
-          <input type='text' id='name' value={name} onChange={e => setName(e.target.value)} />
+          <input type='text' id='name' ref={enteredName} />
         </div>
         <div className={classes.field}>
           <label htmlFor='age'>Age:</label>
-          <input type='number' id='age' value={age} onChange={(e) => setAge(e.target.value)} />
+          <input type='number' id='age' ref={enteredAge} />
         </div>
         <Button className={styles.button} type='submit'>Add</Button>
       </form>
